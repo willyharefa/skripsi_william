@@ -16,4 +16,9 @@ class Ortu extends Authenticatable
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function messenger()
+    {
+        return $this->hasMany(Messenger::class);
+    }
 }

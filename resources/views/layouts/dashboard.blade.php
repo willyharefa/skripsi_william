@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <title>{{ $title }}</title>
         <link href="{{ asset('/css/styles.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/css/messenger.css') }}" rel="stylesheet" />
         {{-- CSS Select2 Bootstrap --}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
@@ -76,6 +77,11 @@
                                     <a class="nav-link" href="{{ route('classgroup.index') }}">Siswa</a>
                                 </nav>
                             </div>
+                            <div class="sb-sidenav-menu-heading">Messenger</div>
+                            <a class="nav-link" href="{{ route('messenger.index') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
+                                Send Messenger
+                            </a>
                             {{-- END MENU ADMIN --}}
                             @endif
 
@@ -98,6 +104,10 @@
                             <a class="nav-link" href="{{ route('ortu.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Data Anak
+                            </a>
+                            <a class="nav-link" href="{{ route('ortu.message') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
+                                Informasi
                             </a>
                             @endif
                         </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\AssestmentController;
 use App\Http\Controllers\ClassgroupController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\MessengerController;
 use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StudentController;
@@ -45,6 +46,7 @@ Route::group(['middleware' => 'auth:teacher,web,ortu'], function() {
     });
 
     Route::group(['middleware' => 'auth:web'], function() {
+        Route::resource('messenger', MessengerController::class);
         Route::resource('teacher', TeacherController::class);
         Route::resource('academic', AcademicYearController::class);
         Route::resource('teacher', TeacherController::class);
@@ -54,6 +56,7 @@ Route::group(['middleware' => 'auth:teacher,web,ortu'], function() {
         Route::resource('classgroup', ClassgroupController::class);
     });
     Route::group(['middleware' => 'auth:ortu'], function() {
+        Route::get('/ortu/message', [OrtuController::class, 'Message'])->name('ortu.message');
         Route::resource('ortu', OrtuController::class);
     } );
 });

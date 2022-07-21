@@ -1,0 +1,26 @@
+.chats {
+  display: flex;
+  background-color: rgba(6, 215, 79, 0.21);
+  align-items: flex-start;
+  padding: 9px 14px;
+  border-radius: 8px;
+}
+.chats img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  margin-right: 10px;
+}
+.chats p {
+  font-size: 14px;
+  padding: 0;
+  margin: 0 0 4px 0;
+}
+.chats label {
+  opacity: 0.5;
+  font-size: 12px;
+}

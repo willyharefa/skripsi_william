@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Assestment;
-use App\Models\Attendance;
-use App\Models\Messenger;
 use App\Models\Ortu;
-use App\Models\Student;
+use App\Models\Messenger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class OrtuController extends Controller
+class MessengerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +16,9 @@ class OrtuController extends Controller
      */
     public function index()
     {
-        $title = "Data anak saya";
-        $absents = Attendance::where('student_id', Auth::user()->student_id)->get();
-        $assestments = Assestment::where('student_id', Auth::user()->student_id)->get();
-        $student = Student::where('id', Auth::user()->student_id)->first();
-        // dd(Auth::user());
-        return view('pages.ortu.index', compact('title', 'absents', 'assestments', 'student'));
+        $title = "Pesan";
+        $ortus = Ortu::all();
+        return view('pages.admin.messenger', compact('title', 'ortus'));
     }
 
     /**
@@ -45,16 +39,24 @@ class OrtuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(Auth::user()->id);
+        Messenger::create([
+            'chat' => $request->chat,
+            'ortu_id' => $request->recipent,
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect()->back()->with("success", "Selamat pesan telah dikirim kepada orangtua murid");
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ortu  $ortu
+     * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
-    public function show(Ortu $ortu)
+    public function show(Messenger $messenger)
     {
         //
     }
@@ -62,10 +64,10 @@ class OrtuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Ortu  $ortu
+     * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ortu $ortu)
+    public function edit(Messenger $messenger)
     {
         //
     }
@@ -74,10 +76,10 @@ class OrtuController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ortu  $ortu
+     * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ortu $ortu)
+    public function update(Request $request, Messenger $messenger)
     {
         //
     }
@@ -85,18 +87,11 @@ class OrtuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Ortu  $ortu
+     * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ortu $ortu)
+    public function destroy(Messenger $messenger)
     {
         //
-    }
-
-    public function Message()
-    {
-        $title = "Informasi";
-        $messages = Messenger::where('ortu_id', Auth::user()->id)->orderBy('id','ASC')->get();
-        return view('pages.ortu.messenger', compact('title', 'messages'));
     }
 }
