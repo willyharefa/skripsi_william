@@ -15,8 +15,4 @@ class Messenger extends Model
     {
         return $this->belongsTo(Ortu::class);
     }
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

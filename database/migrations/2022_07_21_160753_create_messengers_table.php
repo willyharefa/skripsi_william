@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('chat');
             $table->integer('ortu_id');
-            $table->integer('user_id');
+            $table->integer('sender');
             $table->timestamps();
         });
     }

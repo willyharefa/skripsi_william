@@ -96,6 +96,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Nilai Siswa
                             </a>
+                            <div class="sb-sidenav-menu-heading">Messenger</div>
+                            <a class="nav-link" href="{{ route('messenger.index') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
+                                Send Messenger
+                            </a>
                             @endif
                             {{-- END --}}
 

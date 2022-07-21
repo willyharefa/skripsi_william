@@ -45,8 +45,11 @@ Route::group(['middleware' => 'auth:teacher,web,ortu'], function() {
         Route::resource('assestment', AssestmentController::class);
     });
 
-    Route::group(['middleware' => 'auth:web'], function() {
+    Route::group(['middleware' => 'auth:web,teacher'], function() {
         Route::resource('messenger', MessengerController::class);
+    });
+
+    Route::group(['middleware' => 'auth:web'], function() {
         Route::resource('teacher', TeacherController::class);
         Route::resource('academic', AcademicYearController::class);
         Route::resource('teacher', TeacherController::class);

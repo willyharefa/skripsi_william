@@ -43,7 +43,7 @@ class MessengerController extends Controller
         Messenger::create([
             'chat' => $request->chat,
             'ortu_id' => $request->recipent,
-            'user_id' => Auth::user()->id,
+            'sender' => Auth::user()->id,
         ]);
 
         return redirect()->back()->with("success", "Selamat pesan telah dikirim kepada orangtua murid");
